@@ -1,0 +1,41 @@
+<div class="row w-50 my-3">
+  <div class="col-auto mb-3">
+    <a routerLink="/" class="btn btn-link text-decoration-none"
+      ><i class="fa fa-arrow-circle-left"></i> Back To Todos</a
+    >
+  </div>
+  <div
+    class="card border"
+    [ngClass]="{
+      'border-start-success': todo.completed,
+      'border-start-danger': !todo.completed,
+      'bg-light-green': todo.completed
+    }"
+  >
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="text-secondary">Todo ID:</span> {{ todo.id }}
+            </li>
+            <li class="list-group-item">
+              <span class="text-secondary">User ID:</span> {{ todo.userId }}
+            </li>
+            <li class="list-group-item">
+              <span class="text-secondary">Title:</span> {{ todo.title }}
+            </li>
+            <li class="list-group-item">
+              <span class="text-secondary">Priority: </span>
+              {{ todo.priority }}
+            </li>
+            <li class="list-group-item">
+              <span class="text-secondary">Completed: </span>
+              {{ todo.completed }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

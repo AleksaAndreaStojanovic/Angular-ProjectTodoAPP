@@ -1,0 +1,54 @@
+<div class="row w-50">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="this.todoForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <input type="hidden" formControlName="id" />
+          <input type="hidden" formControlName="completed" />
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            formControlName="title"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="priority" class="form-label">Priority</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="priority"
+            id="priority"
+          />
+          <div id="emailHelp" class="form-text">
+            1-Very important, 2-Important, 3-Not so important
+          </div>
+          <button
+            type="button"
+            (click)="less()"
+            class="btn btn-success btn-sm me-2"
+          >
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" (click)="more()" class="btn btn-success btn-sm">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+
+        <button *ngIf="this.isNew" type="submit" class="btn btn-success me-3">
+          Add
+        </button>
+
+        <button *ngIf="!this.isNew" type="submit" class="btn btn-warning me-3">
+          Update
+        </button>
+
+        <button type="button" (click)="clearState()" class="btn btn-secondary">
+          Clear
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

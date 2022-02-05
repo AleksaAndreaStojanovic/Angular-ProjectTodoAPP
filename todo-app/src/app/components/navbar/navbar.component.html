@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Todo</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav ms-auto">
+        <li *ngIf="getLoggedInUser()" class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Todos</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/about"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >About</a
+          >
+        </li>
+
+        <li *ngIf="this.user.username" class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa fa-user-circle-o"></i> {{ this.user.username }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" role="button" (click)="onLogout()"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a
+            *ngIf="!this.user.username"
+            class="nav-link"
+            routerLink="/login"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Login</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            *ngIf="!this.user.username"
+            class="nav-link"
+            routerLink="/register"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Register</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

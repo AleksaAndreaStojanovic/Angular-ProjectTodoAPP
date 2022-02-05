@@ -1,0 +1,33 @@
+<div class="container my-5">
+  <div class="row w-50">
+    <div>
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                formControlName="username"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+              />
+            </div>
+            <div class="d-grid mt-5">
+              <button class="btn btn-success">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

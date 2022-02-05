@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+.border-start-success {
+  border-left: 5px solid var(--bs-success) !important;
+}
+
+.border-start-danger {
+  border-left: 5px solid var(--bs-danger) !important;
+}
+
+.bg-light-green {
+  background-color: #a7d1c5;
+}

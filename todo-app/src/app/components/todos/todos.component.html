@@ -1,0 +1,88 @@
+<app-todo-form
+  (onAddEvent)="addTodo($event)"
+  (onUpdateEvent)="updateTodo($event)"
+></app-todo-form>
+
+<!-- Search -->
+<div class="row w-50 my-3">
+  <div class="card">
+    <div class="card-body">
+      <form>
+        <div class="mb-3">
+          <label for="search">Search</label>
+          <input
+            type="text"
+            class="form-control"
+            name="searchText"
+            id="search"
+            placeholder="Title..."
+            [(ngModel)]="this.searchValue"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="row w-50 my-3"
+  *ngFor="let todo of todos | filter: this.searchValue"
+>
+  <div
+    class="card border"
+    [ngClass]="{
+      'border-start-success': todo.completed,
+      'border-start-danger': !todo.completed,
+      'bg-light-green': todo.completed,
+      'bg-secondary': selectedTodo === todo,
+      'border-danger': todo.priority === 1,
+      'border-warning': todo.priority === 2
+    }"
+  >
+    <div class="card-body">
+      <div class="row">
+        <div class="col-auto d-flex align-items-center">
+          <div class="form-check">
+            <input
+              style="transform: scale(1.3)"
+              class="form-check-input me-3"
+              type="checkbox"
+              value=""
+              id="todo-{{ todo.id }}"
+              [checked]="todo.completed"
+              (change)="toggleComplete(todo)"
+            />
+            <label class="form-check-label" for="todo-{{ todo.id }}">
+              {{ todo.title }}
+            </label>
+          </div>
+        </div>
+        <div class="col-auto ms-auto">
+          <button
+            (click)="onSelect(todo)"
+            type="button"
+            class="btn btn-sm btn-warning me-3"
+          >
+            <i class="fa fa-pencil"></i>
+          </button>
+
+          <button
+            (click)="onDelete(todo.id)"
+            type="button"
+            class="btn btn-sm btn-danger me-3"
+          >
+            <i class="fa fa-trash-o"></i>
+          </button>
+
+          <button
+            routerLink="/todos/{{ todo.id }}"
+            type="button"
+            class="btn btn-sm btn-secondary"
+          >
+            Details <i class="fa fa-arrow-circle-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
